@@ -66,13 +66,23 @@
           events: {
             onReady,
             onStateChange,
-            //onPlaybackQualityChange, Not useful for now?
+            onPlaybackQualityChange,
             onError,
           }
         });
 
 
+        function onPlaybackQualityChange(event) {
+            var playbackQuality = event.target.getPlaybackQuality();
+            var suggestedQuality = 'hd1080';
 
+            console.log("Quality changed to: " + playbackQuality );
+
+            if( playbackQuality !== 'hd1080') {
+                console.log("Setting quality to " + suggestedQuality );
+                event.target.setPlaybackQuality( suggestedQuality );
+            }
+        }
 
         
         function onReady(event) {
@@ -106,12 +116,12 @@
             player.cueVideoById(songID);
           }
           
-          event.target.setPlaybackQuality('hd720');
+          event.target.setPlaybackQuality('hd1080');
         }
 
         function onStateChange(event) {
          if (event.data == YT.PlayerState.BUFFERING) {
-              event.target.setPlaybackQuality('hd720');
+              event.target.setPlaybackQuality('hd1080');
           }
           
           switch (event.data) {
