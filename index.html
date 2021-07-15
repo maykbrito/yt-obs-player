@@ -73,20 +73,23 @@
 
 
         function onPlaybackQualityChange(event) {
-            var playbackQuality = event.target.getPlaybackQuality();
-            var suggestedQuality = 'hd1080';
+          event.target.setPlaybackQuality('hd1080');
+          
+//             var playbackQuality = event.target.getPlaybackQuality();
+//             var suggestedQuality = 'hd1080';
 
-            console.log("Quality changed to: " + playbackQuality );
+//             console.log("Quality changed to: " + playbackQuality );
 
-            if( playbackQuality !== 'hd1080') {
-                console.log("Setting quality to " + suggestedQuality );
-                event.target.setPlaybackQuality( suggestedQuality );
-            }
+//             if( playbackQuality !== 'hd1080') {
+//                 console.log("Setting quality to " + suggestedQuality );
+//                 event.target.setPlaybackQuality( suggestedQuality );
+//             }
         }
 
         
         function onReady(event) {
           // Enforcing defaults params
+          event.target.setPlaybackQuality('hd1080');
           player.setVolume(volume);
           player.getPlaybackRate(1);
           (loop === 'true') ? player.setLoop(true) : player.setLoop(false);
@@ -116,13 +119,10 @@
             player.cueVideoById(songID);
           }
           
-          event.target.setPlaybackQuality('hd1080');
         }
 
         function onStateChange(event) {
-         if (event.data == YT.PlayerState.BUFFERING) {
-              event.target.setPlaybackQuality('hd1080');
-          }
+          event.target.setPlaybackQuality('hd1080');
           
           switch (event.data) {
             case -1: // Not started
