@@ -30,14 +30,14 @@
 
       let songID = url.searchParams.get("watch?v");
       let listID = url.searchParams.get("list");
-      let volume = url.searchParams.get("volume") || 45;
-      let width = url.searchParams.get("w") || 534;
-      let height = url.searchParams.get("h") || 300;
+      let volume = url.searchParams.get("volume") || 100;
+      let width = url.searchParams.get("w") || 1920;
+      let height = url.searchParams.get("h") || 1080;
       let startSeconds = url.searchParams.get("t");
       let index = url.searchParams.get("index") || 0;
-      let random = url.searchParams.get("random") || true;
+      let random = url.searchParams.get("random") || false;
       let loop = url.searchParams.get("loop") || true;
-      let fade = url.searchParams.get("fade") || true;
+      let fade = url.searchParams.get("fade") || false;
       let debugMode = url.searchParams.get("debug") || false;
       let hide = url.searchParams.get("hide") || false;
 
@@ -53,7 +53,7 @@
 
           playerVars: {
             autoplay: 1, // Auto-play the video on load
-            controls: 0, // Show pause/play buttons in player
+            controls: 1, // Show pause/play buttons in player
             showinfo: 0, // Hide the video title
             modestbranding: 1, // Hide the Youtube Logo
             disablekb: 1, // Disable keyboard shortcuts
