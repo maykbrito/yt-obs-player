@@ -68,8 +68,19 @@
             onStateChange,
             //onPlaybackQualityChange, Not useful for now?
             onError,
+            onPlayerReady,
+            onPlayerStateChange,
           }
         });
+
+        function onPlayerReady(event) {
+            event.target.setPlaybackQuality('hd720');
+        }
+        function onPlayerStateChange(event) {
+            if (event.data == YT.PlayerState.BUFFERING) {
+                event.target.setPlaybackQuality('hd720');
+            }
+        }
 
         
         function onReady(event) {
